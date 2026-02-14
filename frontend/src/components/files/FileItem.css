@@ -1,0 +1,92 @@
+.file-item {
+    transition: var(--transition);
+}
+
+.file-item:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.file-icon {
+    font-size: 1.5rem;
+}
+
+.file-details {
+    flex: 1;
+}
+
+.file-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.file-meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.file-comment {
+    color: var(--text-secondary);
+}
+
+.file-public {
+    color: var(--success-color);
+    font-weight: 500;
+}
+
+.file-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    padding: var(--spacing-xs);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    color: var(--text-secondary);
+}
+
+.action-btn:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    transform: scale(1.1);
+}
+
+.action-btn.danger:hover {
+    color: var(--danger-color);
+}
+
+.modal-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.modal-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.modal-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    margin-top: var(--spacing-lg);
+}

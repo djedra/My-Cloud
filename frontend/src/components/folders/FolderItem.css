@@ -1,0 +1,42 @@
+.folder-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    background-color: var(--bg-secondary);
+}
+
+.folder-item:hover {
+    background-color: var(--bg-tertiary);
+    transform: translateX(5px);
+}
+
+.folder-item-active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.folder-item-active .folder-meta {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.folder-icon {
+    font-size: 1.5rem;
+}
+
+.folder-info {
+    flex: 1;
+}
+
+.folder-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.folder-meta {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}

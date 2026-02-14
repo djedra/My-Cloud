@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: mycloud_postgres
+    environment:
+      POSTGRES_DB: mycloud_dev
+      POSTGRES_USER: mycloud_user
+      POSTGRES_PASSWORD: mycloud_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database_setup.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mycloud_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: mycloud_backend
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_ENV=development
+      - DB_NAME=mycloud_dev
+      - DB_USER=mycloud_user
+      - DB_PASSWORD=mycloud_password
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DEBUG=True
+      - SECRET_KEY=django-insecure-dev-key-change-in-production
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env.development
+
+  frontend:
+    image: node:20-alpine
+    container_name: mycloud_frontend
+    working_dir: /app
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install && npm start"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:

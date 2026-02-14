@@ -1,0 +1,14 @@
+.theme-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: var(--border-radius-full);
+    transition: var(--transition);
+}
+
+.theme-toggle-btn:hover {
+    transform: rotate(30deg);
+}

@@ -1,0 +1,7 @@
+# ========================================
+# Django media & static
+# ========================================
+/backend/media/
+!/backend/media/.gitkeep
+/backend/staticfiles/
+!/backend/staticfiles/.gitkeep

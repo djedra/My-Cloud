@@ -1,0 +1,42 @@
+.app {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.main-content {
+    flex: 1;
+    padding: var(--spacing-md);
+    transition: var(--transition);
+}
+
+.main-content.with-navbar {
+    padding-top: 60px;
+}
+
+@media (max-width: 768px) {
+    .main-content.with-navbar {
+        padding-top: 56px;
+    }
+}
+
+/* Анимации для плавных переходов */
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 300ms ease-out;
+}

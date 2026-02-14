@@ -1,0 +1,111 @@
+.home-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: var(--spacing-xl);
+}
+
+.home-container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.home-content {
+    background-color: var(--bg-primary);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-xl);
+    text-align: center;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.home-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.home-subtitle {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-top: var(--spacing-xs);
+}
+
+.home-description {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin: var(--spacing-lg) 0 var(--spacing-2xl);
+    line-height: 1.8;
+}
+
+.home-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.feature-item {
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-secondary);
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.feature-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-item p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.home-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .home-title {
+        font-size: 2.5rem;
+    }
+    
+    .home-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .home-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .home-actions a {
+        width: 100%;
+        max-width: 300px;
+    }
+}

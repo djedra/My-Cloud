@@ -1,0 +1,88 @@
+.share-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.share-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+}
+
+.share-file-icon {
+    font-size: 2rem;
+}
+
+.share-file-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.125rem;
+}
+
+.share-url-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.share-url-section label {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.share-url-container {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.share-url-input {
+    flex: 1;
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.share-privacy {
+    padding: var(--spacing-md);
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius);
+}
+
+.privacy-status {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.privacy-icon {
+    font-size: 1.5rem;
+}
+
+.privacy-icon.public {
+    color: var(--success-color);
+}
+
+.privacy-icon.private {
+    color: var(--text-muted);
+}
+
+.privacy-text {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.privacy-description {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0;
+}

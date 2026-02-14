@@ -1,0 +1,11 @@
+.folder-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.folder-list-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: var(--spacing-lg);
+}

@@ -1,0 +1,126 @@
+.files-page {
+    padding: var(--spacing-lg);
+}
+
+.files-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.files-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.files-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.files-path {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.path-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.path-btn:hover {
+    text-decoration: underline;
+}
+
+.path-separator {
+    color: var(--text-muted);
+}
+
+.path-folder {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.files-header-right {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.files-content {
+    display: flex;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.files-sidebar {
+    flex: 0 0 250px;
+    background-color: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow);
+}
+
+.sidebar-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+}
+
+.files-main {
+    flex: 1;
+    min-width: 300px;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-2xl);
+    text-align: center;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .files-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .files-content {
+        flex-direction: column;
+    }
+
+    .files-sidebar {
+        flex: 1;
+    }
+}
