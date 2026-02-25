@@ -1,7 +1,24 @@
-# Python / Django
+# ========================================
+# Виртуальное окружение Python (Windows)
+# ========================================
 venv/
 .venv/
 env/
+Scripts/
+Lib/
+Include/
+pyvenv.cfg
+
+# ========================================
+# Виртуальное окружение Python (Linux/Mac)
+# ========================================
+bin/
+lib/
+lib64/
+
+# ========================================
+# Python / Django
+# ========================================
 *.pyc
 __pycache__/
 *.pyo
@@ -13,8 +30,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
 parts/
 sdist/
 var/
@@ -54,9 +69,10 @@ celerybeat-schedule
 .env
 .env.*
 !.env.example
-pyvenv.cfg
 
+# ========================================
 # Node.js / React
+# ========================================
 node_modules/
 npm-debug.log*
 yarn-debug.log*
@@ -70,13 +86,17 @@ build/
 out/
 nuxt.config.*.js
 
+# ========================================
 # Django media & static
+# ========================================
 /backend/media/
 !/backend/media/.gitkeep
 /backend/staticfiles/
 !/backend/staticfiles/.gitkeep
 
+# ========================================
 # IDE & Editors
+# ========================================
 .vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
@@ -87,7 +107,9 @@ nuxt.config.*.js
 *.swo
 *~
 
+# ========================================
 # OS & Misc
+# ========================================
 .DS_Store
 .DS_Store?
 ._*
