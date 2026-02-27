@@ -84,7 +84,7 @@
 
 ### 1. Клонирование репозитория
 
-````bash
+```bash
 git clone https://github.com/djedra/My-Cloud.git
 cd My-Cloud
 
@@ -94,12 +94,10 @@ cd My-Cloud
 
 2. Настройка переменных окружения
 Для бэкенда (backend/.env):
-bash
 cp backend/.env.example backend/.env
 # Отредактируйте файл под свои параметры
-Минимальная конфигурация:
 
-env
+Минимальная конфигурация:
 SECRET_KEY=your-secret-key-here-change-in-production
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
@@ -115,14 +113,16 @@ JWT_REFRESH_TOKEN_LIFETIME=1440
 MAX_UPLOAD_SIZE=104857600
 MEDIA_ROOT=media
 CORS_ALLOWED_ORIGINS=http://localhost:3000
+
 Для фронтенда (frontend/.env):
-bash
+
 cp frontend/.env.example frontend/.env
-env
+
 REACT_APP_API_URL=http://localhost:8000/api
 REACT_APP_STORAGE_URL=http://localhost:8000/media
+
 3. Запуск через Docker (рекомендуется)
-bash
+
 # Запуск всех контейнеров
 docker compose up -d --build
 
@@ -134,6 +134,7 @@ docker compose exec backend python manage.py collectstatic --noinput
 
 # Создание суперпользователя
 docker compose exec backend python manage.py createsuperuser
+
 После выполнения приложение будет доступно:
 
 Фронтенд: http://localhost:3000
@@ -144,7 +145,7 @@ API: http://localhost:8000/api/
 
 4. Ручной запуск (без Docker)
 Бэкенд
-bash
+
 cd backend
 
 # Создание виртуального окружения
@@ -163,8 +164,9 @@ python manage.py createsuperuser
 
 # Запуск сервера
 python manage.py runserver
+
 Фронтенд
-bash
+
 cd frontend
 
 # Установка зависимостей
@@ -175,8 +177,9 @@ npm run build
 
 # Запуск сервера разработки
 npm start
+
 📁 Структура проекта
-text
+
 My-Cloud/
 ├── backend/                    # Django бэкенд
 │   ├── mycloud/               # Основные настройки
@@ -201,10 +204,11 @@ My-Cloud/
 ├── docker-compose.yml          # Конфигурация Docker
 ├── nginx.conf                   # Конфигурация Nginx
 └── README.md
+
 📡 API Документация
 Аутентификация
 Регистрация
-http
+
 POST /api/users/register/
 Content-Type: application/json
 
@@ -215,8 +219,8 @@ Content-Type: application/json
   "password": "SecurePass123!",
   "password2": "SecurePass123!"
 }
+
 Вход
-http
 POST /api/users/login/
 Content-Type: application/json
 
@@ -224,9 +228,9 @@ Content-Type: application/json
   "username": "john_doe",
   "password": "SecurePass123!"
 }
+
 Ответ:
 
-json
 {
   "user": {
     "id": 1,
@@ -238,13 +242,15 @@ json
   "access": "eyJ0eXAiOiJKV1QiLCJhbGc...",
   "refresh": "eyJ0eXAiOiJKV1QiLCJhbGc..."
 }
+
 Работа с файлами
 Получение списка файлов
-http
+
 GET /api/storage/files/
 Authorization: Bearer <access_token>
+
 Загрузка файла
-http
+
 POST /api/storage/files/upload/
 Authorization: Bearer <access_token>
 Content-Type: multipart/form-data
@@ -252,14 +258,17 @@ Content-Type: multipart/form-data
 file: <файл>
 comment: "Описание файла"
 folder_id: 1  # опционально
+
 Скачивание файла
-http
+
 GET /api/storage/files/<file_id>/download/
 Authorization: Bearer <access_token>
+
 Публичная ссылка
-http
+
 GET /api/storage/share/<share_token>/
 # Не требует авторизации
+
 👨‍💼 Администрирование
 Доступ к админке Django
 Перейдите на http://localhost:8000/admin/
@@ -289,7 +298,7 @@ GET /api/storage/share/<share_token>/
 
 🌐 Развертывание на сервере
 1. Подготовка сервера (Ubuntu 22.04+)
-bash
+
 # Обновление системы
 sudo apt update && sudo apt upgrade -y
 
@@ -303,8 +312,9 @@ sudo apt install docker-compose -y
 
 # Выход и повторный вход для применения прав
 exit
+
 2. Клонирование и настройка
-bash
+
 git clone https://github.com/djedra/My-Cloud.git
 cd My-Cloud
 
@@ -312,8 +322,6 @@ cd My-Cloud
 cp backend/.env.example backend/.env
 nano backend/.env  # Отредактируйте под продакшен
 Продакшен-конфигурация .env:
-
-env
 SECRET_KEY=your-very-long-secret-key-here
 DEBUG=False
 ALLOWED_HOSTS=your-domain.com,www.your-domain.com
@@ -329,8 +337,8 @@ JWT_REFRESH_TOKEN_LIFETIME=1440
 MAX_UPLOAD_SIZE=104857600
 MEDIA_ROOT=media
 CORS_ALLOWED_ORIGINS=https://your-domain.com
+
 3. Запуск
-bash
 # Запуск контейнеров
 docker compose up -d --build
 
@@ -342,48 +350,44 @@ docker compose exec backend python manage.py collectstatic --noinput
 
 # Создание суперпользователя
 docker compose exec backend python manage.py createsuperuser
+
 4. Настройка SSL (HTTPS)
-bash
+
 # Установка Certbot
 sudo apt install certbot python3-certbot-nginx -y
 
 # Получение сертификата
 sudo certbot --nginx -d your-domain.com
+
 🔧 Устранение неполадок
 1. Ошибка 502 Bad Gateway
 Причина: Nginx не может связаться с контейнером фронтенда
 Решение:
-
-bash
 # Проверьте, что фронтенд слушает правильный порт
 docker compose logs frontend
 
 # В nginx.conf должен быть указан порт 3000
 # upstream frontend { server frontend:3000; }
+
 2. Ошибка подключения к БД
 Причина: Неправильный DB_HOST в настройках
 Решение:
-
-bash
 # В контейнерах используйте имя сервиса
 # DB_HOST=db, а не localhost!
+
 3. Статические файлы не грузятся
 Решение:
-
-bash
 docker compose exec backend python manage.py collectstatic --noinput
+
 4. Фронтенд отправляет запросы на localhost:8000
 Причина: Переменные окружения не встроены в бандл
 Решение:
-
-bash
 # Пересоберите фронтенд с правильными переменными
 docker compose build --no-cache frontend
 5. Не получается войти в админку
 Причина: Пользователь не имеет прав суперпользователя
 Решение:
 
-bash
 docker compose exec backend python manage.py shell -c "
 from users.models import CustomUser
 user = CustomUser.objects.get(username='admin')
@@ -391,9 +395,9 @@ user.is_superuser = True
 user.is_staff = True
 user.save()
 "
+
 📝 Полезные команды
 Docker
-bash
 # Просмотр логов
 docker compose logs -f
 
@@ -406,8 +410,8 @@ docker compose restart
 # Полная пересборка
 docker compose down -v --remove-orphans
 docker compose up -d --build
+
 Бэкенд
-bash
 # Применение миграций
 docker compose exec backend python manage.py migrate
 
@@ -416,13 +420,14 @@ docker compose exec backend python manage.py makemigrations
 
 # Доступ к shell Django
 docker compose exec backend python manage.py shell
+
 Фронтенд
-bash
 # Пересборка фронтенда
 docker compose build --no-cache frontend
 
 # Проверка файлов в контейнере
 docker compose exec frontend ls -la /usr/share/nginx/html/
+
 📄 Лицензия
 Проект разработан в образовательных целях в рамках дипломной работы.
 
@@ -438,21 +443,5 @@ Email: djedra@ya.ru
 
 Сообществу Docker за отличную документацию
 
-Всем, кто тестировал и помогал с отладкой
-
 Спасибо за использование My Cloud! ☁️✨
-
-text
-
----
-
-## 📤 Сохрани и отправь
-
-1. **На сервере:** нажми `Ctrl+O`, затем `Enter`, затем `Ctrl+X` для выхода
-2. **Добавь в Git:**
-
-```bash
-git add README.md
-git commit -m "docs: add detailed README with deployment instructions"
-git push origin main
-````
+```
